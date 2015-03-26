@@ -26,46 +26,14 @@ public class Main {
 		}
 	}
 
-	private static String getPrint(String line) {
-		String input1 = line.split(";")[0];
-		String input2 = line.split(";")[1];
-		
-		String [] wordArr = input1.split(" ");
-		
-		String [] keyArr = input2.split(" ");
-		
-
-		List<String> wordList = new LinkedList<String>(Arrays.asList(wordArr));
-		
-		StringBuffer sb = new StringBuffer();
-		
-		int maxLoop = keyArr.length;
-		
-		if (keyArr.length >wordArr.length) {
-			maxLoop = wordArr.length;
+	private static int getPrint(String line) {
+		String binInput = Integer.toBinaryString(Integer.parseInt(line));
+		int result = 0;
+		for (int i = 0; i < binInput.length(); i++){
+			result+= Character.getNumericValue(binInput.charAt(i));
 		}
 		
-		String [] resultArr =  new String [wordArr.length];
-		for (int i = 0; i< maxLoop; i++){
-			resultArr [Integer.parseInt(keyArr[i])-1] = (wordArr[i]+ " ");
-			
-			wordList.remove(wordArr[i]);
-		}
-		
-			for (int t = 0; t <wordArr.length; t++){
-				if (resultArr[t] != null)
-					sb.append(resultArr[t]);
-				else {
-					sb.append(wordList.get(0)+" ");
-					wordList.remove(0);
-				}
-			}
-	
-			
-		
-		return removeLast(sb.toString(), " ");
-		
-		
+		return result;
 		
 	}
 
@@ -103,12 +71,9 @@ public class Main {
 	
 //	public static void main(String[] args) throws IOException {
 //		
-//		
-//		
-//		
-//		System.out.println(getPrint("2000 and was not However, implemented 1998 it until;9 8 3 4 1 5 7 2"));
-//		System.out.println(getPrint("programming first The language;3 2 1"));
-//		System.out.println(getPrint("programs Manchester The written ran Mark 1952 1 in Autocode from;6 2 1 7 5 3 11 4 8 9"));
+//		System.out.println(getPrint("10"));
+//		System.out.println(getPrint("22"));
+//		System.out.println(getPrint("56"));
 //
 //	}
 }
